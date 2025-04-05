@@ -1,0 +1,37 @@
+<div class="container">
+    <h2>Crear habitación</h2>
+    <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Categoría</mat-label>
+            <mat-select formControlName="category">
+                <mat-option value="">Seleccionar</mat-option>
+                <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Precio por noche</mat-label>
+            <input matInput type="number" formControlName="pricePerNight" placeholder="Ingrese el precio">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput formControlName="description" placeholder="Ingrese la descripción"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>URL de la imagen</mat-label>
+            <input matInput type="url" formControlName="imageUrl" placeholder="Ingrese el URL de la imagen">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Estatus</mat-label>
+            <mat-select formControlName="status">
+                <mat-option value="">Seleccionar</mat-option>
+                <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit">Enviar</button>
+    </form>
+</div>
