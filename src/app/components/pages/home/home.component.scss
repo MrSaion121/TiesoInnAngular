@@ -1,0 +1,117 @@
+.carousel {
+  display: flex;
+  overflow: hidden;
+  margin: 2rem auto; 
+  position: relative;
+  width: 70%;       
+  height: 500px;      
+}
+
+.carousel-item {
+  min-width: 100%;
+  transition: transform 0.5s ease-in-out;
+  position: absolute;
+  left: 0;
+  transform: translateX(0);
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+  border-radius: 10px;
+}
+
+.carousel-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.carousel-controls button {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.info-section {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 8rem;
+}
+
+.info-card {
+  text-align: center;
+  padding: 2rem;
+  margin: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 30%;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 1.5rem 0;
+}
+
+.social-icons .material-icons {
+  font-size: 2rem;
+  color: darkorange;
+  cursor: pointer;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.social-icons .material-icons:hover {
+  color: darkorange;
+  transform: scale(1.2);
+}
+
+.social-icons a {
+  font-size: 2rem;
+  color: darkorange;
+  cursor: pointer;
+  transition: transform 0.3s, color 0.3s;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: darkorange;
+  transform: scale(1.2);
+}
+
+.social-icons span {
+  font-size: 2rem;
+  color: darkorange;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.social-icons span:hover {
+  color: darkorange;
+}
+
+.reserve-button {
+  background-color: darkorange;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
