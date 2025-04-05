@@ -1,0 +1,14 @@
+<div class="help-container">
+    <mat-form-field appearance="outline" class="chat-box">
+      <textarea matInput placeholder="Aquí se mostrarán los mensajes..." rows="10" disabled></textarea>
+    </mat-form-field>
+  
+    <div class="input-container">
+      <mat-form-field appearance="outline" class="input-field">
+        <input matInput placeholder="Escribe tu mensaje..." [(ngModel)]="message">
+      </mat-form-field>
+  
+      <button mat-raised-button class="orange-button" (click)="sendMessage()">Enviar</button>
+    </div>
+  </div>
+  

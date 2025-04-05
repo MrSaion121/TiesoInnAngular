@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RoomConfigComponent } from './room-config.component';
+import { RoomConfigComponent } from './create-room.component';
 
 describe('RoomConfigComponent', () => {
   let component: RoomConfigComponent;
