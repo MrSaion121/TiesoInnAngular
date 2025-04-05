@@ -11,9 +11,8 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'login', component: LoginComponent, children: [
-        {path: 'forgot-password', component: ForgotPasswordComponent}
-    ] },
+    {path: 'login', component: LoginComponent},
+    {path: 'forgot-password', component: ForgotPasswordComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'rooms', component: RoomsComponent, children: [
         {path: ':id', component: ReservationComponent}
