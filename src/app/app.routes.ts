@@ -7,6 +7,7 @@ import { RoomsComponent } from './components/pages/rooms/rooms.component';
 import { ReservationComponent } from './components/pages/rooms/reservation/reservation.component';
 import { ChatComponent } from './components/pages/chat/chat.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
+import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -19,5 +20,5 @@ export const routes: Routes = [
     ]},
     {path: 'chat', component: ChatComponent},
     {path: 'profile', component: ProfileComponent},
-    
+    {path: '**', component: NotFoundComponent}
 ];

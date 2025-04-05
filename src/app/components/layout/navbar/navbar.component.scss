@@ -1,0 +1,43 @@
+mat-toolbar {
+    background-color: darkorange;
+}
+
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 30px;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-link {
+  font-size: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-link:hover {
+    color: #fcebb9; 
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+
+.active-link {
+    font-weight: bold;
+    color: #fcebb9;
+    border-bottom: 3px solid #fcebb9;
+}

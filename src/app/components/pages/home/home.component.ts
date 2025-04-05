@@ -1,23 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../../../modules/material/material.module';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FontawesomeModule } from '../../../modules/fontawesome/fontawesome.module';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MaterialModule, FontawesomeModule, CommonModule],
+  imports: [ FontawesomeModule, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   currentSlide = 0;
   slides = [0, 1, 2]; // Number of slides
+  private intervalId: number | null = null;
 
   ngOnInit(): void {
-    setInterval(() => {
+    this.intervalId = window.setInterval(() => {
       this.nextSlide();
     }, 5000);
+  }
+
+  ngOnDestroy(): void {
+    if (this.intervalId !== null) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
   }
 
   nextSlide(): void {
@@ -37,6 +44,4 @@ export class HomeComponent implements OnInit {
       (item as HTMLElement).style.transform = `translateX(${position}%)`;
     });
   }
-
-  
 }

@@ -1,1 +1,41 @@
-<p>navbar works!</p>
+<mat-toolbar>
+  <span class="navbar-left">
+    <span class="nav-logo" routerLink="">Tieso Inn</span>
+    <span class="nav-link" routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Inicio</span>
+    <span class="nav-link" routerLink="/rooms" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Reservar</span>
+  </span>
+
+  <span class="spacer"></span>
+
+  <span class="navbar-right">
+    <span *ngIf="!isLoggedIn" class="nav-link" [matMenuTriggerFor]="login">
+      Ingreso
+      <mat-icon>arrow_drop_down</mat-icon>
+    </span>
+    <mat-menu #login="matMenu">
+      <button mat-menu-item routerLink="/login">
+        <mat-icon>login</mat-icon>
+        <span>Login</span>
+      </button>
+      <button mat-menu-item routerLink="/register">
+        <mat-icon>app_registration</mat-icon>
+        <span>Registro</span>
+      </button>
+    </mat-menu>
+
+    <span *ngIf="isLoggedIn" class="nav-link" [matMenuTriggerFor]="account">
+        Cuenta
+        <mat-icon>arrow_drop_down</mat-icon>
+    </span>
+    <mat-menu #account="matMenu">
+        <button mat-menu-item routerLink="/profile">
+          <mat-icon>account_circle</mat-icon>
+          <span>Mi Cuenta</span>
+        </button>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Cerrar sesión</span>
+        </button>
+    </mat-menu>
+    </span>
+</mat-toolbar>
