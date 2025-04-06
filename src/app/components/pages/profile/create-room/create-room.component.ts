@@ -5,13 +5,13 @@ import { NavbarComponent } from "../../../layout/navbar/navbar.component";
 import { MaterialModule } from '../../../../modules/material/material.module';
 
 @Component({
-  selector: 'app-room-config',
+  selector: 'app-create-room',
   standalone: true,
   imports: [NavbarComponent, MaterialModule, ReactiveFormsModule],
   templateUrl: './create-room.component.html',
   styleUrl: './create-room.component.scss'
 })
-export class RoomConfigComponent implements OnInit {
+export class CreateRoomComponent implements OnInit {
   roomForm!: FormGroup;
   categories = ['Estándar', 'Doble', 'Suite'];
   statuses = ['Disponible', 'Ocupada', 'Mantenimiento'];

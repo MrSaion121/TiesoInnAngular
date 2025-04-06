@@ -3,14 +3,16 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { CreateRoomComponent } from './create-room/create-room.component';
 
 import { MaterialModule } from '../../../modules/material/material.module';
 import { MatDialog } from '@angular/material/dialog';
+import { RoomListComponent } from "./room-list/room-list.component";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, MaterialModule],
+  imports: [RouterOutlet, CommonModule, MaterialModule, CreateRoomComponent, RoomListComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
