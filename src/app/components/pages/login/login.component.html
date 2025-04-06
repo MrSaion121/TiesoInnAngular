@@ -16,17 +16,28 @@
     </div>
     
     <div class="login-container">
-        <form [formGroup]="loginForm">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <h1>Iniciar Sesión</h1>
             <mat-form-field>
                 <mat-label>Email</mat-label>
                 <input matInput formControlName="email" placeholder="Ingresa tu email">
+                @if (loginForm.get('email')?.hasError('required')) {
+                    <mat-error>El correo es obligatorio</mat-error>
+                }
+                @if (loginForm.get('email')?.hasError('email')) {
+                    <mat-error>Correo inválido</mat-error>
+                }
             </mat-form-field>
             <mat-form-field>
-                <mat-label>Password</mat-label>
+                <mat-label>Contraseña</mat-label>
                 <input matInput formControlName="password" placeholder="Ingresa tu contraseña" [type]="hide ? 'password' : 'text'" >
                 <button mat-icon-button matSuffix (click)="toggleVisibility()"><mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon></button>
-
+                @if (loginForm.get('password')?.hasError('required')) {
+                    <mat-error>La contraseña es obligatoria</mat-error>
+                }
+                @if (loginForm.get('password')?.hasError('minlength')) {
+                    <mat-error>Debe tener por lo menos 6 caracteres</mat-error>
+                }
             </mat-form-field>
         
             <div class="google-login">
@@ -36,7 +47,7 @@
             </div>
         
             <div>
-                <button mat-button color="primary" class="login-button" [disabled]="loginForm.invalid">Ingresar</button>
+                <button mat-button color="primary" class="login-button" [disabled]="loginForm.invalid" type="submit">Ingresar</button>
             </div>
         
         </form>
