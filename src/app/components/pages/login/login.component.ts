@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class LoginComponent {
 
   hide: boolean = true;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -30,4 +30,10 @@ export class LoginComponent {
   toggleVisibility() {
     this.hide = !this.hide;
   }
+
+  onSubmit() {
+    localStorage.setItem('token', 'prueba')
+    this.router.navigate(['/']);
+  }
 }
+
