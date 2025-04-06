@@ -10,7 +10,10 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { 
   faChevronLeft, 
-  faChevronRight 
+  faChevronRight,
+  faHotel,
+  faBullseye,
+  faEye
 } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
@@ -25,6 +28,7 @@ import {
 })
 export class FontawesomeModule { 
   constructor(library: FaIconLibrary) {
+    // Add icons to the library for convenient access in components
     library.addIcons(
       faFacebookF,
       faTwitter,
@@ -32,7 +36,10 @@ export class FontawesomeModule {
       faWhatsapp,
       faTelegram,
       faChevronLeft,
-      faChevronRight
+      faChevronRight,
+      faHotel,
+      faBullseye,
+      faEye
     );
   }
 }

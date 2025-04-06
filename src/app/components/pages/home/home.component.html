@@ -1,42 +1,71 @@
-<div class="carousel">
-  <div class="carousel-item">
-    <img src="../../../../assets/Carrousel1.jpg" alt="Imagen 1">
+<section class="hero-section">
+  <div class="carousel">
+    <div class="carousel-item">
+      <img src="../../../../assets/Carrousel1.jpg" alt="Imagen 1">
+    </div>
+    <div class="carousel-item">
+      <img src="../../../../assets/Carrousel2.jpg" alt="Imagen 2">
+    </div>
+    <div class="carousel-item">
+      <img src="../../../../assets/Carrousel3.jpg" alt="Imagen 3">
+    </div>
+    <div class="carousel-controls">
+        <button class="material-icons" (click)="prevSlide()">chevron_left</button>
+        <button class="material-icons" (click)="nextSlide()">chevron_right</button>
+    </div>
   </div>
-  <div class="carousel-item">
-    <img src="../../../../assets/Carrousel2.jpg" alt="Imagen 2">
+  
+  <div class="hero-text">
+    <h1>Tieso Inn</h1>
+    <p>Descubre una experiencia única de hospedaje</p>
+    <button class="cta-button" routerLink="/rooms">Reservar ahora</button>
   </div>
-  <div class="carousel-item">
-    <img src="../../../../assets/Carrousel3.jpg" alt="Imagen 3">
-  </div>
-  <div class="carousel-controls">
-    <button class="material-icons" (click)="prevSlide()">chevron_left</button>
-    <button class="material-icons" (click)="nextSlide()">chevron_right</button>
-  </div>
-</div>
+</section>
 
-<div class="info-section">
-  <div class="info-card">
-    <h3>Nosotros</h3>
-    <p>Somos un hotel que busca ofrecer experiencias únicas y memorables.</p>
+<section class="info-section">
+  <h2>Sobre nosotros</h2>
+  <div class="info-cards">
+    <div class="info-card">
+      <div class="card-icon">
+        <fa-icon [icon]="['fas', 'hotel']"></fa-icon>
+      </div>
+      <h3>Nosotros</h3>
+      <p>Somos un hotel que busca ofrecer experiencias únicas y memorables.</p>
+    </div>
+    <div class="info-card">
+      <div class="card-icon">
+        <fa-icon [icon]="['fas', 'bullseye']"></fa-icon>
+      </div>
+      <h3>Misión</h3>
+      <p>Brindar comodidad y calidad en cada hospedaje.</p>
+    </div>
+    <div class="info-card">
+      <div class="card-icon">
+        <fa-icon [icon]="['fas', 'eye']"></fa-icon>
+      </div>
+      <h3>Visión</h3>
+      <p>Ser el hotel favorito de viajeros de todo el mundo.</p>
+    </div>
   </div>
-  <div class="info-card">
-    <h3>Misión</h3>
-    <p>Brindar comodidad y calidad en cada hospedaje.</p>
-  </div>
-  <div class="info-card">
-    <h3>Visión</h3>
-    <p>Ser el hotel favorito de viajeros de todo el mundo.</p>
-  </div>
-</div>
+</section>
 
-<div class="footer">
-  <h3>Nuestras Redes</h3>
+<section class="social-section">
+  <h2>Conéctate con nosotros</h2>
   <div class="social-icons">
-    <a href="#" target="_blank"><fa-icon [icon]="['fab', 'facebook-f']"></fa-icon></a>
-    <a href="#" target="_blank"><fa-icon [icon]="['fab', 'twitter']"></fa-icon></a>
-    <a href="#" target="_blank"><fa-icon [icon]="['fab', 'instagram']"></fa-icon></a>
-    <a href="#" target="_blank"><fa-icon [icon]="['fab', 'telegram']"></fa-icon></a>
-    <a href="#" target="_blank"><fa-icon [icon]="['fab', 'whatsapp']"></fa-icon></a>
+    <a href="#" target="_blank" aria-label="Facebook">
+      <fa-icon [icon]="['fab', 'facebook-f']"></fa-icon>
+    </a>
+    <a href="#" target="_blank" aria-label="Twitter">
+      <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
+    </a>
+    <a href="#" target="_blank" aria-label="Instagram">
+      <fa-icon [icon]="['fab', 'instagram']"></fa-icon>
+    </a>
+    <a href="#" target="_blank" aria-label="Telegram">
+      <fa-icon [icon]="['fab', 'telegram']"></fa-icon>
+    </a>
+    <a href="#" target="_blank" aria-label="WhatsApp">
+      <fa-icon [icon]="['fab', 'whatsapp']"></fa-icon>
+    </a>
   </div>
-  <button class="reserve-button">Reservar Ahora</button>
-</div>
+</section>
