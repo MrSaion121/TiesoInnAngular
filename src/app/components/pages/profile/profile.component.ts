@@ -1,13 +1,77 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EditUserComponent } from './edit-user/edit-user.component';
+
+import { MaterialModule } from '../../../modules/material/material.module';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule, MaterialModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent {
+  profileForm!: FormGroup;
 
+  // Hardcoded values
+  username = 'Santiago Oseguera';
+  email = 'santiagoseguera19@gmail.com';
+  phone = '+52 3312345678';
+
+  roles = ['Cliente', 'Administrador', 'Gerente', 'Recepcionista'];
+  statuses = ['Activo', 'Inactivo'];
+
+  // Edit users tab hardcoded values
+
+  userList = [
+    { id: '1', name: 'Juan Perez', role: 'Gerente', status: 'Activo' },
+    { id: '2', name: 'Pedro Jimenez', role: 'Recepcionista', status: 'Activo' },
+    { id: '3', name: 'Ana Admin', role: 'Admin', status: 'Activo' },
+    { id: '4', name: 'Ana Cliente', role: 'Cliente', status: 'Inactivo' },
+  ];
+
+  displayedColumns: string[] = ['id', 'name', 'role', 'status', 'actions'];
+
+  constructor(private fb: FormBuilder, private dialog: MatDialog) {}
+
+  ngOnInit(): void {
+    this.profileForm = this.fb.group({
+      username: ['', Validators.required],
+      role: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      phone: ['', Validators.required],
+      status: ['', Validators.required],
+    })
+  }
+
+  editUser(user: any) {
+    const dialogRef = this.dialog.open(EditUserComponent, {
+      width: '75%',
+      data: user
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Usuario actualizado:', result);
+        const index = this.userList.findIndex(u => u.id === user.id);
+        if (index !== -1) {
+          this.userList[index] = {
+            ...this.userList[index],
+            name: result.username,
+            role: result.role,
+            status: result.status
+          };
+        }
+      }
+    });
+}
+
+  deleteUser(id: string) {
+    this.userList = this.userList.filter(user => user.id !== id);
+  }
 }
