@@ -1,3 +1,22 @@
-<p>rooms works!</p>
+<section class="rooms-section">
+  <h1>Habitaciones Disponibles</h1>
+  <div class="rooms-container">
+    <div class="room-card" *ngFor="let room of paginatedRooms; let i = index">
+      <img [src]="room.image" [alt]="'Habitación ' + (i + 1)" [title]="'Habitación ' + (i + 1)" />
+      <div class="room-info">
+        <h2>{{ room.id }}</h2>
+        <p><strong>Categoría:</strong> {{ room.category }}</p>
+        <p>{{ room.description }}</p>
+        <p><strong>Costo por noche:</strong> {{ room.price }}</p>
+        <button class="reserve-button" [routerLink]="['/rooms', room.id]">Reservar</button>
+      </div>
+    </div>
+  </div>
 
-<router-outlet></router-outlet>
+  <div class="paginator">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+    <span>Página {{ currentPage }} de {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Siguiente</button>
+  </div>
+  <router-outlet></router-outlet>
+</section>
