@@ -26,7 +26,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatToolbarModule,
     MatTableModule,
     MatMenuModule,
-    RouterModule
+    RouterModule,
     MatFormFieldModule,
     MatOptionModule,
     MatSelectModule,
