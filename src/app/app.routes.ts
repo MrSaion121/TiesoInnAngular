@@ -7,9 +7,13 @@ import { RoomsComponent } from './components/pages/rooms/rooms.component';
 import { ReservationComponent } from './components/pages/rooms/reservation/reservation.component';
 import { ChatComponent } from './components/pages/chat/chat.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
+import { CreateRoomComponent as CreateRoomComponent } from './components/pages/profile/create-room/create-room.component';
+import { HelpComponent } from './components/pages/home/help/help.component';
 
 export const routes: Routes = [
-    {path: '', component: HomeComponent},
+    {path: '', component: HomeComponent, children: [
+        {path: 'help', component: HelpComponent}
+    ]},
     {path: 'login', component: LoginComponent, children: [
         {path: 'forgot-password', component: ForgotPasswordComponent}
     ] },
@@ -19,5 +23,5 @@ export const routes: Routes = [
     ]},
     {path: 'chat', component: ChatComponent},
     {path: 'profile', component: ProfileComponent},
-    
+
 ];

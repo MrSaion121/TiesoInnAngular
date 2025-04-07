@@ -1,0 +1,36 @@
+<h2>Editar Usuario</h2>
+<form [formGroup]="form" (ngSubmit)="save()" class="user-form">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="username">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Rol</mat-label>
+    <mat-select formControlName="role">
+      <mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Correo Electrónico</mat-label>
+    <input matInput formControlName="email">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Teléfono</mat-label>
+    <input matInput formControlName="phone">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Estado</mat-label>
+    <mat-select formControlName="status">
+      <mat-option *ngFor="let status of statuses" [value]="status">{{status}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="button-row">
+    <button mat-button (click)="close()">Cancelar</button>
+    <button mat-raised-button class="orange-button" type="submit">Guardar Cambios</button>
+  </div>  
+</form>
