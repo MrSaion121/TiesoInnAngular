@@ -11,13 +11,11 @@ import { NotFoundComponent } from './components/pages/not-found/not-found.compon
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
-    {path: 'login', component: LoginComponent, children: [
-        {path: 'forgot-password', component: ForgotPasswordComponent}
-    ] },
+    {path: 'login', component: LoginComponent},
+    {path: 'forgot-password', component: ForgotPasswordComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'rooms', component: RoomsComponent, children: [
-        {path: ':id', component: ReservationComponent}
-    ]},
+    {path: 'rooms', component: RoomsComponent},
+    {path: 'rooms/:id', component: ReservationComponent},
     {path: 'chat', component: ChatComponent},
     {path: 'profile', component: ProfileComponent},
     {path: '**', component: NotFoundComponent}
