@@ -8,6 +8,7 @@ import { ReservationComponent } from './components/pages/rooms/reservation/reser
 import { ChatComponent } from './components/pages/chat/chat.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
+import { GoogleVerificationComponent } from './components/pages/google-verification/google-verification.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -18,5 +19,6 @@ export const routes: Routes = [
     {path: 'rooms/:id', component: ReservationComponent},
     {path: 'chat', component: ChatComponent},
     {path: 'profile', component: ProfileComponent},
+    {path: 'google', component: GoogleVerificationComponent},
     {path: '**', component: NotFoundComponent}
 ];
