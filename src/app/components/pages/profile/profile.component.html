@@ -8,11 +8,11 @@
         </mat-card>
     </mat-tab>
 
-    <mat-tab label="Configuraciones">
+    <mat-tab *ngIf="userRole !== 'cliente'" label="Configuraciones">
         <mat-card class="config-card">
             <h2 class="config-title">Configuración de Sistema</h2>
             <mat-tab-group class="inner-tabs">
-                <mat-tab label="Crear Usuarios">
+                <mat-tab *ngIf="userRole === 'admin'" label="Crear Usuarios">
                     <form class="user-form">
                         <mat-form-field appearance="outline" class="full-width">
                             <mat-label>Nombre</mat-label>
@@ -52,7 +52,7 @@
                     </form>
                 </mat-tab>
 
-                <mat-tab label="Gestión de Usuarios">
+                <mat-tab *ngIf="userRole === 'gerente' || userRole === 'admin'" label="Gestión de Usuarios">
                     <mat-card>
                         <table mat-table [dataSource]="userList" class="mat-elevation-z8 full-width">
                             <ng-container matColumnDef="id">
@@ -89,13 +89,13 @@
                     </mat-card>
                 </mat-tab>
 
-                <mat-tab label="Habitaciones">
+                <mat-tab *ngIf="userRole === 'recepcionista' || userRole === 'gerente' || userRole === 'admin'" label="Habitaciones">
                     <mat-card>
                         <app-room-list></app-room-list>
                     </mat-card>
                 </mat-tab>
 
-                <mat-tab label="Crear habitación">
+                <mat-tab *ngIf="userRole === 'recepcionista' || userRole === 'admin'" label="Crear habitación">
                     <mat-card>
                         <app-create-room></app-create-room>
                     </mat-card>

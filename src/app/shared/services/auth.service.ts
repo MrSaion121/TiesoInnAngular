@@ -31,6 +31,7 @@ interface RegisterData {
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   private apiUrl = environment.production 
     ? 'https://tiesoinnapi.onrender.com/api' 
