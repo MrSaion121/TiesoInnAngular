@@ -1,0 +1,41 @@
+:host {
+    display: block;
+    padding: 24px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .user-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 100%;
+    padding: 8px;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #ff6600;
+    margin-bottom: 24px;
+  }
+  
+  .mat-dialog-container {
+    border-radius: 12px;
+  }
+  
+  .orange-button {
+    background-color: #ff6600 !important;
+    color: white !important;
+  }
+  
+  .button-row {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  

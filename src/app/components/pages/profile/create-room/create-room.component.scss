@@ -1,0 +1,22 @@
+.container {
+    max-width: 500px;
+    margin: auto;
+    padding: 2rem;
+  
+    h2 {
+      text-align: center;
+      color: #ff6600;
+      margin-bottom: 2rem;
+    }
+  
+    .full-width {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  
+    button {
+      width: 100%;
+      background-color: #ff6600;
+      color: white;
+    }
+}
