@@ -34,6 +34,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     }
   `]
 })
+
 export class GoogleVerificationComponent implements OnInit {
   loading = true;
   error = '';
@@ -84,4 +85,3 @@ export class GoogleVerificationComponent implements OnInit {
       });
     }
   }
-}

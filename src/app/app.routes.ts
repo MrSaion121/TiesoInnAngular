@@ -9,7 +9,9 @@ import { ChatComponent } from './components/pages/chat/chat.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 import { GoogleVerificationComponent } from './components/pages/google-verification/google-verification.component';
+
 import { authGuard } from './shared/guards/auth.guard';
+
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},

@@ -9,6 +9,8 @@ import { MaterialModule } from '../../../modules/material/material.module';
 import { MatDialog } from '@angular/material/dialog';
 import { RoomListComponent } from "./room-list/room-list.component";
 
+import { AuthService } from '../../../shared/services/auth.service';
+
 @Component({
   selector: 'app-profile',
   standalone: true,
@@ -38,9 +40,22 @@ export class ProfileComponent {
 
   displayedColumns: string[] = ['id', 'name', 'role', 'status', 'actions'];
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog) {}
+  userRole: string = '';
+  currentUser: any;
+
+  constructor(
+    private fb: FormBuilder, 
+    private dialog: MatDialog,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
+    const user = this.authService.getUser();
+    if (user) {
+      this.currentUser = user;
+      this.userRole = user.role.toLowerCase();
+    }
+    
     this.profileForm = this.fb.group({
       username: ['', Validators.required],
       role: ['', Validators.required],
@@ -76,4 +91,5 @@ export class ProfileComponent {
   deleteUser(id: string) {
     this.userList = this.userList.filter(user => user.id !== id);
   }
+
 }

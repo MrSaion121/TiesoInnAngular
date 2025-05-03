@@ -34,7 +34,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTabsModule
+    MatTabsModule,
   ]
 })
 
