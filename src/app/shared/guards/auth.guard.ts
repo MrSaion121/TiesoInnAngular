@@ -16,11 +16,13 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-  return httpClient.post<{ valid: boolean }>(`${environment.apiUrl}/me`, { headers })
+  return httpClient.get(`${environment.apiUrl}/auth/me`, { headers })
   .pipe(
     map(() => true),
     catchError(() => {
       router.navigate(['/login']);
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
       return of(false);
     })
   )
