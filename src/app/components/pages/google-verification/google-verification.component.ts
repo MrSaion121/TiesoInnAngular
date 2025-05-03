@@ -85,3 +85,4 @@ export class GoogleVerificationComponent implements OnInit {
       });
     }
   }
+}
