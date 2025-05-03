@@ -56,3 +56,4 @@ export class AuthGoogleService {
     this.router.navigate(['/login']);
   }
 }
+
