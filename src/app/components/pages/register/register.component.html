@@ -16,65 +16,74 @@
     </div>
     
     <div class="register-container">
-        <form [formGroup]="registerForm">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <h1>Registro</h1>
             <mat-form-field>
                 <mat-label>Nombre</mat-label>
-                <input matInput formControlName="name">
-                @if (registerForm.get('name')?.hasError('required') ) {
+                <input matInput formControlName="name" placeholder="Ingresa tu nombre completo">
+                @if (registerForm.get('name')?.hasError('required') && registerForm.get('name')?.touched) {
                     <mat-error>El nombre es obligatorio</mat-error>
                 }
-                @if (registerForm.get('name')?.hasError('minlength') ) {
-                    <mat-error>Debe tener por lo menos 3 caracteres</mat-error>
+                @if (registerForm.get('name')?.hasError('minlength') && registerForm.get('name')?.touched) {
+                    <mat-error>El nombre debe tener al menos 3 caracteres</mat-error>
                 }
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Email</mat-label>
-                <input matInput formControlName="email" placeholder="prueba@email.com">
-                @if (registerForm.get('email')?.hasError('required')) {
+                <input matInput formControlName="email" placeholder="Ingresa tu email">
+                @if (registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched) {
                     <mat-error>El correo es obligatorio</mat-error>
                 }
-                @if (registerForm.get('email')?.hasError('email')) {
+                @if (registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched) {
                     <mat-error>Correo inválido</mat-error>
                 }
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Teléfono</mat-label>
-                <input matInput formControlName="phone" type="tel" >
-                @if (registerForm.get('phone')?.hasError('required')) {
+                <input matInput formControlName="cellphone" placeholder="Ingresa tu número de teléfono">
+                @if (registerForm.get('cellphone')?.hasError('required') && registerForm.get('cellphone')?.touched) {
                     <mat-error>El teléfono es obligatorio</mat-error>
                 }
-                @if (registerForm.get('phone')?.hasError('pattern')) {
-                    <mat-error>Debe tener 10 digítos</mat-error>
+                @if (registerForm.get('cellphone')?.hasError('pattern') && registerForm.get('cellphone')?.touched) {
+                    <mat-error>Debe ser un número de 10 dígitos</mat-error>
                 }
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Contraseña</mat-label>
-                <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" >
-                <button mat-icon-button matSuffix (click)="toggleVisibility()"><mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon></button>
-                @if (registerForm.get('password')?.hasError('required')) {
+                <input matInput formControlName="password" placeholder="Ingresa tu contraseña" [type]="hide ? 'password' : 'text'" >
+                <button type="button" mat-icon-button matSuffix (click)="toggleVisibility()">
+                  <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                @if (registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched) {
                     <mat-error>La contraseña es obligatoria</mat-error>
                 }
-                @if (registerForm.get('password')?.hasError('minlength')) {
+                @if (registerForm.get('password')?.hasError('minlength') && registerForm.get('password')?.touched) {
                     <mat-error>Debe tener por lo menos 6 caracteres</mat-error>
                 }
             </mat-form-field>
             <mat-form-field>
-                <mat-label>Confirmar contraseña</mat-label>
-                <input matInput formControlName="confirmPassword" [type]="hide ? 'password' : 'text'" >
-                @if (registerForm.get('confirmPassword')?.hasError('passwordMismatch') || registerForm.get('confirmPassword')?.hasError('required')) {
+                <mat-label>Confirmar Contraseña</mat-label>
+                <input matInput formControlName="confirmPassword" placeholder="Confirma tu contraseña" [type]="hide ? 'password' : 'text'" >
+                <button type="button" mat-icon-button matSuffix (click)="toggleVisibility()">
+                  <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                </button>
+                @if (registerForm.get('confirmPassword')?.hasError('passwordMismatch') || 
+                     (registerForm.get('confirmPassword')?.hasError('required') && registerForm.get('confirmPassword')?.touched)) {
                     <mat-error>Las contraseñas no coinciden</mat-error>
                 }
             </mat-form-field>
         
             <div>
-                <button mat-button color="primary" class="register-button" [disabled]="registerForm.invalid" routerLink="/login">Crear Cuenta</button>
+                <button mat-button color="primary" class="register-button" 
+                   [disabled]="registerForm.invalid || isLoading" type="submit">
+                   <span *ngIf="!isLoading">Crear Cuenta</span>
+                   <span *ngIf="isLoading">Cargando...</span>
+                </button>
             </div>
         
         </form>
         
         <p>¿Ya tienes una cuenta? <a routerLink="/login">Inicia sesión aquí</a></p>
     </div>
-    
 </div>
 
