@@ -1,6 +1,6 @@
-describe('My First Test', () => {
-  it('Visits the initial project page', () => {
-    cy.visit('/')
-    cy.contains('app is running')
+describe('Home Screen', () => {
+  it('should load the home screen', () => {
+    cy.visit('/');
+    cy.contains('Tieso Inn');
   })
 })

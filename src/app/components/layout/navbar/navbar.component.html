@@ -8,16 +8,16 @@
   <span class="spacer"></span>
 
   <span class="navbar-right">
-    <span *ngIf="!isLoggedIn" class="nav-link" [matMenuTriggerFor]="login">
+    <span *ngIf="!isLoggedIn" class="nav-link" [matMenuTriggerFor]="login" id="login-register">
       Ingreso
       <mat-icon>arrow_drop_down</mat-icon>
     </span>
     <mat-menu #login="matMenu">
-      <button mat-menu-item routerLink="/login">
+      <button mat-menu-item routerLink="/login" id="login">
         <mat-icon>login</mat-icon>
         <span>Login</span>
       </button>
-      <button mat-menu-item routerLink="/register">
+      <button mat-menu-item routerLink="/register" id="register">
         <mat-icon>app_registration</mat-icon>
         <span>Registro</span>
       </button>
