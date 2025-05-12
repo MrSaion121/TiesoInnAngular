@@ -1,12 +1,72 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { io, Socket } from 'socket.io-client';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './chat.component.html',
-  styleUrl: './chat.component.scss'
+  styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent {
+export class ChatComponent implements OnInit, OnDestroy {
+  socket!: Socket;
+  message: string = '';
+  messages: ChatMessage[] = [];
+  socketId: string = '';
 
+  @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
+
+  ngOnInit() {
+    this.socket = io(environment.socketUrl);
+
+    this.socket.on('connect', () => {
+      this.socketId = this.socket.id as string;
+      console.log('Socket conectado con ID:', this.socketId);
+    });
+
+    this.socket.on('connect_error', (err) => {
+      console.error('Error de conexión socket:', err.message);
+    });
+
+    this.socket.on('chatMessage', (msg: ChatMessage) => {
+      console.log('📩 Mensaje recibido del servidor:', msg);
+      this.messages.push(msg);
+      setTimeout(() => this.scrollToBottom(), 100);
+    });
+  }
+
+  sendMessage(): void {
+    const trimmed = this.message.trim();
+    if (!trimmed) return;
+
+    const chatMsg: ChatMessage = {
+      text: trimmed,
+      senderId: this.socketId,
+      timestamp: new Date().toISOString()
+    };
+
+    this.socket.emit('chatMessage', chatMsg);
+    this.message = '';
+  }
+
+  scrollToBottom() {
+    try {
+      this.messagesContainer.nativeElement.scrollTop =
+        this.messagesContainer.nativeElement.scrollHeight;
+    } catch (err) {}
+  }
+
+  ngOnDestroy() {
+    this.socket.disconnect();
+  }
+}
+
+
+interface ChatMessage {
+  text: string;
+  senderId: string;
+  timestamp: string;
 }
