@@ -1,7 +1,7 @@
 .container {
     max-width: 500px;
     margin: auto;
-    padding: 2rem;
+    padding: 20px;
   
     h2 {
       text-align: center;
@@ -11,7 +11,7 @@
   
     .full-width {
       width: 100%;
-      margin-bottom: 1rem;
+      margin-bottom: 15px;
     }
   
     button {
@@ -19,4 +19,37 @@
       background-color: darkorange;
       color: white;
     }
+}
+
+.image-upload-container {
+    margin-bottom: 20px;
+    border: 1px dashed #ccc;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.file-input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.file-name {
+    margin-left: 10px;
+    color: #666;
+}
+
+.image-preview {
+    margin-top: 15px;
+    
+    img {
+        max-width: 100%;
+        max-height: 200px;
+        border-radius: 4px;
+        border: 1px solid #eee;
+    }
+}
+
+mat-progress-bar {
+    margin: 10px 0;
 }
