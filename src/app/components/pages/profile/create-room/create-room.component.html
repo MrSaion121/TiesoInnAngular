@@ -31,6 +31,33 @@
             </mat-select>
         </mat-form-field>
 
-        <button mat-raised-button color="primary" type="submit">Enviar</button>
+        <div class="image-upload-container">
+            <h3>Imagen de la habitación</h3>
+            
+            <div class="file-input-container">
+                <button type="button" mat-raised-button color="primary" (click)="fileInput.click()">
+                    <mat-icon>cloud_upload</mat-icon> Seleccionar archivo
+                </button>
+                <input #fileInput type="file" accept="image/*" style="display: none" (change)="onFileSelected($event)">
+                <span *ngIf="selectedFile" class="file-name">{{ selectedFile.name }}</span>
+            </div>
+            
+            <mat-progress-bar *ngIf="uploadProgress > 0" [value]="uploadProgress"></mat-progress-bar>
+            
+            <div *ngIf="roomForm.get('imageUrl')?.value" class="image-preview">
+                <img [src]="roomForm.get('imageUrl')?.value" alt="Vista previa">
+            </div>
+            
+            <mat-error *ngIf="roomForm.get('imageUrl')?.hasError('required') && roomForm.get('imageUrl')?.touched">
+                La imagen es obligatoria
+            </mat-error>
+        </div>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="isSubmitting">
+            <span *ngIf="!isSubmitting">Guardar habitación</span>
+            <span *ngIf="isSubmitting">
+                Guardando...
+            </span>
+        </button>
     </form>
 </div>
