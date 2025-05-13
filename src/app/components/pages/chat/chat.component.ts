@@ -20,23 +20,27 @@ export class ChatComponent implements OnInit, OnDestroy {
   @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
 
   ngOnInit() {
-    this.socket = io(environment.socketUrl);
+  this.socket = io(environment.socketUrl);
 
-    this.socket.on('connect', () => {
-      this.socketId = this.socket.id as string;
-      console.log('Socket conectado con ID:', this.socketId);
-    });
+  this.socket.on('connect', () => {
+    this.socketId = this.socket.id as string;
+    console.log('Socket conectado con ID:', this.socketId);
+  });
 
-    this.socket.on('connect_error', (err) => {
-      console.error('Error de conexión socket:', err.message);
-    });
+  // Recibe historial
+  this.socket.on('chatHistory', (history: ChatMessage[]) => {
+    console.log('Historial recibido:', history);
+    this.messages = history;
+    setTimeout(() => this.scrollToBottom(), 100);
+  });
 
-    this.socket.on('chatMessage', (msg: ChatMessage) => {
-      console.log('📩 Mensaje recibido del servidor:', msg);
-      this.messages.push(msg);
-      setTimeout(() => this.scrollToBottom(), 100);
-    });
-  }
+  this.socket.on('chatMessage', (msg: ChatMessage) => {
+    console.log('Mensaje recibido del servidor:', msg);
+    this.messages.push(msg);
+    setTimeout(() => this.scrollToBottom(), 100);
+  });
+}
+
 
   sendMessage(): void {
     const trimmed = this.message.trim();

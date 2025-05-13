@@ -21,15 +21,8 @@ import { AuthService } from '../../../shared/services/auth.service';
 export class ProfileComponent {
   profileForm!: FormGroup;
 
-  // Hardcoded values
-  username = 'Santiago Oseguera';
-  email = 'santiagoseguera19@gmail.com';
-  phone = '+52 3312345678';
-
   roles = ['Cliente', 'Administrador', 'Gerente', 'Recepcionista'];
   statuses = ['Activo', 'Inactivo'];
-
-  // Edit users tab hardcoded values
 
   userList = [
     { id: '1', name: 'Juan Perez', role: 'Gerente', status: 'Activo' },
@@ -40,8 +33,12 @@ export class ProfileComponent {
 
   displayedColumns: string[] = ['id', 'name', 'role', 'status', 'actions'];
 
-  userRole: string = '';
   currentUser: any;
+  userRole: string = '';
+
+  name = '';
+  email = '';
+  cellphone = '';
 
   constructor(
     private fb: FormBuilder, 
@@ -51,19 +48,25 @@ export class ProfileComponent {
 
   ngOnInit(): void {
     const user = this.authService.getUser();
+
     if (user) {
       this.currentUser = user;
-      this.userRole = user.role.toLowerCase();
+      this.userRole = user.role?.toLowerCase() || '';
+
+      // 🔁 Aquí asignamos los valores reales
+      this.name = user.name || '';
+      this.email = user.email || '';
+      this.cellphone = user.cellphone || '';
     }
-    
+
     this.profileForm = this.fb.group({
-      username: ['', Validators.required],
-      role: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      username: [this.name, Validators.required],
+      role: [this.userRole, Validators.required],
+      email: [this.email, [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      phone: ['', Validators.required],
-      status: ['', Validators.required],
-    })
+      cellphone: [this.cellphone, Validators.required],
+      status: ['Activo', Validators.required], // Por defecto activo
+    });
   }
 
   editUser(user: any) {
@@ -71,7 +74,7 @@ export class ProfileComponent {
       width: '75%',
       data: user
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         console.log('Usuario actualizado:', result);
@@ -86,10 +89,9 @@ export class ProfileComponent {
         }
       }
     });
-}
+  }
 
   deleteUser(id: string) {
     this.userList = this.userList.filter(user => user.id !== id);
   }
-
 }
