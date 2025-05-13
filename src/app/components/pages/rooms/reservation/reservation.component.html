@@ -1,1 +1,28 @@
-<p>reservation works!</p>
+<div class="reservation-container">
+    <h2>Reservar habitación</h2>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Fecha de llegada:</mat-label>
+        <input matInput [matDatepicker]="picker1" [(ngModel)]="arrivalDate" placeholder="dd/mm/aaaa">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Fecha de salida:</mat-label>
+        <input matInput [matDatepicker]="picker2" [(ngModel)]="arrivalDate" placeholder="dd/mm/aaaa">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Número de huéspedes:</mat-label>
+        <input matInput type="number" min="1" [(ngModel)]="guests">
+    </mat-form-field>
+
+    <div class="cost-info">
+        <p><strong>Costo por noche:</strong> ${{ pricePerNight }}</p>
+    </div>
+
+    <button mat-flat-button color="primary">Confirmar reserva</button>
+</div>

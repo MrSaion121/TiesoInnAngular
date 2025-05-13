@@ -1,0 +1,41 @@
+.profile-card, .config-card {
+    margin: 20px;
+    padding: 20px;
+}
+  
+.config-title {
+    color: darkorange;
+    margin-bottom: 20px;
+    text-align: center;
+}
+  
+.user-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 500px;
+    margin: 24px auto 0 auto;
+}
+  
+.full-width {
+    width: 100%;
+}
+  
+.orange-button {
+    align-self: flex-start;
+    background-color: darkorange !important;
+    color: white !important;
+}
+
+.yellow-button {
+    background-color: #ecc047 !important;
+    color: black !important;
+    margin: 0 4px;
+}
+
+.red-button {
+    background-color: #f34a4a !important;
+    color: white !important;
+    margin: 0 4px;
+}
+  
