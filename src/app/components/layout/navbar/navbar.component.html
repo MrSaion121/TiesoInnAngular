@@ -8,6 +8,10 @@
   <span class="spacer"></span>
 
   <span class="navbar-right">
+    <span *ngIf="isLoggedIn" class="nav-link" routerLink="/chat">
+      <mat-icon>help_outline</mat-icon>
+      Ayuda
+    </span>
     <span *ngIf="!isLoggedIn" class="nav-link" [matMenuTriggerFor]="login" id="login-register">
       Ingreso
       <mat-icon>arrow_drop_down</mat-icon>
@@ -28,7 +32,7 @@
       <mat-icon>arrow_drop_down</mat-icon>
     </span>
     <mat-menu #account="matMenu">
-      <button mat-menu-item routerLink="/profile">
+      <button mat-menu-item data-testid="mi-cuenta-link" routerLink="/profile">
         <mat-icon>account_circle</mat-icon>
         <span>Mi Cuenta</span>
       </button>
