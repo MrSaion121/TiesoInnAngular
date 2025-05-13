@@ -5,6 +5,10 @@ import { catchError, map, of } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 export const authGuard: CanActivateFn = (route, state) => {
+  const apiUrl = environment.production 
+    ? 'https://tiesoinnapi.onrender.com/api' 
+    : 'http://localhost:10000/api';
+
   const router = inject(Router);
   const httpClient = inject(HttpClient);
 
@@ -16,7 +20,7 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-  return httpClient.get(`${environment.apiUrl}/auth/me`, { headers })
+  return httpClient.get(`${apiUrl}/auth/me`, { headers })
   .pipe(
     map(() => true),
     catchError(() => {
