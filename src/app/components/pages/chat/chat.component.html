@@ -1,1 +1,25 @@
-<p>chat works!</p>
+<main>
+  <div class="chat-box">
+    <div #messagesContainer class="messages">
+      <div
+        *ngFor="let msg of messages"
+        class="message"
+        [ngClass]="{ 'mine': msg.senderId === socketId, 'theirs': msg.senderId !== socketId }"
+      >
+        <div class="text">{{ msg.text }}</div>
+        <div class="timestamp">{{ msg.timestamp | date: 'shortTime' }}</div>
+      </div>
+    </div>
+
+    <form (submit)="sendMessage(); $event.preventDefault()">
+      <input
+        type="text"
+        [(ngModel)]="message"
+        name="message"
+        placeholder="Escribe tu mensaje..."
+        required
+      />
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</main>

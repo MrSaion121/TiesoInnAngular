@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FontawesomeModule } from '../../../modules/fontawesome/fontawesome.module';
+import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ FontawesomeModule, CommonModule,RouterModule],
+  imports: [ MatIconModule, CommonModule,RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

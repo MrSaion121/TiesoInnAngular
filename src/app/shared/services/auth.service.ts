@@ -13,6 +13,7 @@ interface AuthResponse {
     email: string;
     picture?: string;
     role: string;
+    cellphone?: string;
   };
 }
 
