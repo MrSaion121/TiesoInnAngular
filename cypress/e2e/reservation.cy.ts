@@ -11,7 +11,7 @@ describe('Reservation screen flow', () => {
 
     cy.get('form').submit();
 
-    cy.url().should('eq', Cypress.config().baseUrl + '/');
+    cy.url().should('eq', Cypress.config().baseUrl);
 
     cy.contains('Reservar ahora').click();
 

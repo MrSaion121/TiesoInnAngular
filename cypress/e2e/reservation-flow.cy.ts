@@ -19,13 +19,13 @@ describe('Reservation Flow', () => {
     cy.url().should('include', '/login');
     
     // Enter login credentials
-    cy.get('input[formControlName="email"]').type('axel@axel.com');
-    cy.get('input[formControlName="password"]').type('axelaxel');
+    cy.get('input[formControlName="email"]').type('prueba@rodrigo.com');
+    cy.get('input[formControlName="password"]').type('Hola123');
     cy.get('button[type="submit"]').should('not.be.disabled');
     cy.contains('Ingresar').click();
     
     // Verify successful login
     cy.url().should('include', '/');
-    cy.get('app-navbar').contains('axel').should('be.visible');
+    cy.get('app-navbar').contains('Rodrigo').should('be.visible');
   });
 });
